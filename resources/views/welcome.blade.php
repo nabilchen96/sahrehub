@@ -124,40 +124,54 @@
 
                         const div = document.createElement('div');
                         div.innerHTML = `
-                        <div class="col-lg-12 mb-4 p-0 px-lg-3">
+                        <div class="col-lg-12 mb-5 p-0 px-lg-3">
                             <div class="p-0 px-lg-2">
-                                ${mediaElement}
-                                <div class="p-2 d-flex justify-content-between mt-3 mt-lg-2 align-items-center">
-                                    <!-- avatar -->
-                                    <a style="color: black; text-decoration: none;" href="/profil?id=${item.id_user}" class="d-flex align-items-center">
+                                <div class="d-flex justify-content-between">
+                                    <a style="color: black; text-decoration: none;" href="/profil?id=${item.id_user}" 
+                                        class="d-flex align-items-center mb-2">
                                         <div>
-                                            <img style="object-fit: cover;" src="/profile/${item.photo}"
+                                            <img style="width: 35px; height: 35px; object-fit: cover;" src="/profile/${item.photo}"
                                                 alt="Image" class="mr-3 avatar avatar-md rounded-circle">
                                         </div>
                                         
-                                        <div class="ms-3">
-                                            <h5 class="mb-0">${item.name}</h5>
-                                            <p class="mb-0">${timeAgo(item.created_at)}</p>
+                                        <div class="ms-2">
+                                            <h5 style="font-size: 14px;" class="mb-0">${item.name}</h5>
+                                            <p style="font-size: 12px; " class="mb-0">${timeAgo(item.created_at)}</p>
                                         </div>
                                     </a>
-                                    <div class="d-flex justify-content-end">
-                                        <div class="mr-4 text-center">
-                                            ${liked}
-                                        </div>
-                                        <div class="mr-4 text-center">
-                                            <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">
-                                                <i style="font-size: 1.3rem;" class="bi bi-chat-right-text text-info"></i> <br>
-                                                <span style="font-size: 12px;">${item.total_comment}</span>
-                                            </a>
-                                        </div>
-                                        <div class="text-center"> <!-- Tambahkan kelas text-center di sini -->
-                                            ${bookmarked}
-                                        </div>
+                                    <i style="font-size: 1.3rem;" class="bi bi-three-dots-vertical"></i>
+                                </div>
+                                ${mediaElement}
+                                <div class="p-2 d-flex justify-content-between mt-3 mt-lg-2 align-items-center">
+                                    <div class="mr-4 text-center">
+                                        ${liked}
                                     </div>
+                                    <div class="mr-4 text-center">
+                                        <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">
+                                            <i style="font-size: 1.3rem;" class="bi bi-chat-right-text text-info"></i> <br>
+                                            <span style="font-size: 12px;">${item.total_comment}</span>
+                                        </a>
+                                    </div>
+                                    <div class="mr-4 text-center">
+                                        <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">
+                                            <i style="font-size: 1.3rem;" class="bi bi-arrow-up-circle text-primary"></i> <br>
+                                            <span style="font-size: 12px;">${item.total_comment}</span>
+                                        </a>
+                                    </div>
+                                    <div class="mr-4 text-center">
+                                        <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">
+                                            <i style="font-size: 1.3rem;" class="bi bi-arrow-down-circle text-primary"></i> <br>
+                                            <span style="font-size: 12px;">0</span>
+                                        </a>
+                                    </div>
+                                    <div class="text-center"> <!-- Tambahkan kelas text-center di sini -->
+                                        ${bookmarked}
+                                        <span style="font-size: 12px;">0</span>
+                                    </div>
+
                                 </div>
                                 <div class="pr-2 pl-2">
-
-                                    <hr>
+                                    <br>
                                     <p>
                                         ${item.keterangan}
                                         <br>
@@ -165,7 +179,7 @@
                                             ${item.tag.split(',').map(tag => `<a href="eksplor?id=${tag.trim()}">#${tag.trim()}</a>`).join(' ')}
                                         </div>
                                     </p>
-
+                                    <hr>
                                 </div>
                             </div>
                         </div> 
