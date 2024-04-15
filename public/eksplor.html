@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Skydash Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    .avatar-md {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+
+    .tag-title {
+      display: none;
+    }
+
+    .avatar {
+      display: inline-block;
+      height: 3rem;
+      position: relative;
+      width: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2"
+            alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+
+        <ul class="navbar-nav navbar-nav-right">
+
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="images/faces/face28.jpg" alt="profile" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="ti-settings text-primary"></i>
+                Settings
+              </a>
+              <a class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="bi bi-house-door menu-icon mr-2 mb-1"></i>
+              <span class="menu-title">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="bi bi-compass menu-icon mr-2 mb-1"></i>
+              <span class="menu-title">Eksplor</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="bi bi-plus-square menu-icon mr-2 mb-1"></i>
+              <span class="menu-title">Buat Post</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="bi bi-bookmark menu-icon mr-2 mb-1"></i>
+              <span class="menu-title">Simpan</span>
+            </a>
+          </li>
+          <li class="nav-item px-3">
+            <hr>
+            <p style="font-size: 18px;" class="mb-3 mt-4"><b>Populer 🔥</b></p>
+            <p><a href="">#ngakakkocak</a></p>
+            <p><a href="">#populer</a></p>
+            <p><a href="">#menyalaabangku</a></p>
+            <p><a href="">#meme</a></p>
+            <p><a href="">#gilobabi</a></p>
+          </li>
+        </ul>
+
+        
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+              <div class="row">
+                <div style="height: 34px;" class="col-12 p-1 mb-3 input-group">
+                  <input style="height: 34px;" type="text" class="form-control" placeholder="Cari Post..."
+                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <button style="height: 34px;" class="bg-info text-white input-group-text" id="basic-addon2">
+                    <i class="bi bi-search"></i>
+                  </button>
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;"
+                    src="https://cdn1-production-images-kly.akamaized.net/e79QLoSb9hwK_lARhrHmTw_SOxg=/500x500/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3050032/original/008684400_1581647756-sekumpulan_3.jpg"
+                    alt="">
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;" src="https://i.pinimg.com/564x/69/e0/e1/69e0e16fb910b2a8025851467c49e8db.jpg"
+                    alt="">
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;"
+                    src="https://i.pinimg.com/originals/bd/09/a3/bd09a3d63403f85f436285456528bbf2.jpg" alt="">
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;" src="https://pbs.twimg.com/media/CCFpOpPVIAELF6l.jpg" alt="">
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;"
+                    src="https://cdn1-production-images-kly.akamaized.net/e79QLoSb9hwK_lARhrHmTw_SOxg=/500x500/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/3050032/original/008684400_1581647756-sekumpulan_3.jpg"
+                    alt="">
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;" src="https://i.pinimg.com/564x/69/e0/e1/69e0e16fb910b2a8025851467c49e8db.jpg"
+                    alt="">
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;"
+                    src="https://i.pinimg.com/originals/bd/09/a3/bd09a3d63403f85f436285456528bbf2.jpg" alt="">
+                </div>
+                <div class="col-4 p-1">
+                  <img style="aspect-ratio: 1/1;
+                  width: 100%;
+                  object-fit: cover;" src="https://pbs.twimg.com/media/CCFpOpPVIAELF6l.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-1"></div>
+          </div>
+        </div>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+
+  </div>
+  <br><br><br><br>
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+ 
+</body>
+
+</html>
