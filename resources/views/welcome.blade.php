@@ -125,7 +125,7 @@
                         const div = document.createElement('div');
                         div.innerHTML = `
                         <div class="col-lg-12 mb-4 p-0 px-lg-3">
-                            <div class="p-2">
+                            <div class="p-0 px-lg-2">
                                 ${mediaElement}
                                 <div class="p-2 d-flex justify-content-between mt-3 mt-lg-2 align-items-center">
                                     <!-- avatar -->

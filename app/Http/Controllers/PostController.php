@@ -67,6 +67,7 @@ class PostController extends Controller
             $data = $data
                 ->select(
                     DB::raw('MAX(p.id) as id'),
+                    DB::raw('MAX(p.id_user) as id_user'),
                     DB::raw('MAX(p.keterangan) as keterangan'),
                     DB::raw('MAX(p.created_at) as created_at'),
                     DB::raw('MAX(p.media) as media'),
