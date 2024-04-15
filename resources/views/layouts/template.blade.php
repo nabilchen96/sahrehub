@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('skydash/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('skydash/vendors/ti-icons/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('skydash/css/vertical-layout-light/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('skydash/vendors/css/vendor.bundle.base.css')}}">
+    <link rel="stylesheet" href="{{ asset('skydash/vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('logo.png') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -54,7 +54,9 @@
     </div>
     <!-- inject:js -->
     <script src="{{ asset('skydash/vendors/js/vendor.bundle.base.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('skydash/js/off-canvas.js') }}"></script>
     <script src="{{ asset('skydash/js/template.js') }}"></script>
@@ -67,6 +69,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
+    <!-- Default Statcounter code for Social Media Sahrehub
+    https://social.sahrebook.com -->
+    <script type="text/javascript">
+        var sc_project = 12988259;
+        var sc_invisible = 1;
+        var sc_security = "f15bac2e";
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter">
+            <a title="free hit counter" href="https://statcounter.com/" target="_blank">
+                <img class="statcounter" src="https://c.statcounter.com/12988259/0/f15bac2e/1/" alt="free hit counter"
+                    referrerPolicy="no-referrer-when-downgrade">
+            </a>
+        </div>
+    </noscript>
+    <!-- End of Statcounter Code -->
     @stack('script')
 </body>
 
