@@ -22,6 +22,7 @@ class ActivityController extends Controller
     {
         $data = DB::table('likes as l')
             ->leftJoin('posts as p', 'p.id', '=', 'l.id_post')
+            ->leftJoin('tags as t', 't.id_post', '=', 'p.id')
             ->where('l.id_user', Auth::id())
             ->paginate(10);
 
@@ -37,6 +38,7 @@ class ActivityController extends Controller
     {
         $data = DB::table('ups as l')
             ->leftJoin('posts as p', 'p.id', '=', 'l.id_post')
+            ->leftJoin('tags as t', 't.id_post', '=', 'p.id')
             ->where('l.id_user', Auth::id())
             ->paginate(10);
 
@@ -52,6 +54,7 @@ class ActivityController extends Controller
     {
         $data = DB::table('bookmarks as b')
             ->leftJoin('posts as p', 'p.id', '=', 'b.id_post')
+            ->leftJoin('tags as t', 't.id_post', '=', 'p.id')
             ->where('b.id_user', Auth::id())
             ->paginate(10);
 
@@ -66,6 +69,11 @@ class ActivityController extends Controller
     public function dataPost()
     {
         $data = DB::table('posts as b')
+            ->leftJoin('tags as t', 't.id_post', '=', 'b.id')
+            ->select(
+                'b.*',
+                't.tag'
+            )
             ->where('b.id_user', Auth::id())
             ->orderBy('b.created_at', 'DESC')
             ->paginate(18);
@@ -84,8 +92,8 @@ class ActivityController extends Controller
             ->leftJoin('posts as p', 'p.id', '=', 'b.id_post')
             ->where('b.id_user', Auth::id())
             ->select(
-                'p.*', 
-                'b.keterangan as komentar', 
+                'p.*',
+                'b.keterangan as komentar',
                 'b.created_at as waktu_komentar'
             )
             ->orderBy('b.created_at', 'DESC')

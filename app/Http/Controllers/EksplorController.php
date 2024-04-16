@@ -23,6 +23,7 @@ class EksplorController extends Controller
             ->join('tags as t', 't.id_post', '=', 'p.id')
             ->select(
                 'p.*',
+                't.tag'
             );
 
         foreach ($q as $keyword) {

@@ -82,7 +82,7 @@
 
                     <p class="teks mt-3 pr-4">
 
-                        {{ $data->keterangan }}
+                        @php echo htmlspecialchars_decode($data->keterangan); @endphp
                         <br>
                         <span class="text-info">
                             @php

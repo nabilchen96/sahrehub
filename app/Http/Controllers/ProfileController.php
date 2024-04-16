@@ -54,8 +54,10 @@ class ProfileController extends Controller
     public function dataProfilePost(){
         
         $data = DB::table('posts as p')
+                ->join('tags as t', 't.id_post', '=', 'p.id')
                 ->select(
                     'p.*',
+                    't.tag'
                 )
                 ->where('p.id_user', Request('id'))
                 ->orderBy('p.created_at', 'DESC')

@@ -183,7 +183,7 @@
                             mediaElement = `
                                 <a href="/detail-post?id=${item.id}">
                                     <img class="gambar-eksplor" src="/media/${item.media}"
-                                        alt="${item.keterangan}">
+                                        alt="${item.tag}">
                                 </a>
                             `;
                         }

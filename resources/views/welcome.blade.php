@@ -45,7 +45,8 @@
         let currentPage = 1;
         loadItems(currentPage);
         loadPopular();
-
+        let id_loggedin = {{ $id_user }} ?? 0
+        
         function loadItems(page) {
             axios.get(`data-post?page=${page}`)
                 .then(response => {
@@ -54,11 +55,10 @@
                     let mediaElement = ``
 
                     items.forEach(item => {
-
                         let liked = '';
                         let bookmarked = '';
-                        if ({{ $id_user }} != 0) {
-                            if ({{ $id_user }} == item.id_user_like) {
+                        if (id_loggedin != 0) {
+                            if (id_loggedin == parseInt(item.id_user_like)) {
                                 liked = `
                                     <a style="color: black; text-decoration: none;" href="javascript:void(0)" onclick="likePost('${item.id}')">
                                         <i id="like${item.id}" style="font-size: 1.3rem;" class="bi bi-heart-fill text-danger"></i> <br>
@@ -74,7 +74,7 @@
                                 `;
                             }
 
-                            if ({{ $id_user }} == item.id_user_up) {
+                            if (id_loggedin == item.id_user_up) {
                                 uped = `
                                     <a style="color: black; text-decoration: none;" href="javascript:void(0)" onclick="upPost('${item.id}')">
                                         <i id="up${item.id}" style="font-size: 1.3rem;" class="bi bi-arrow-up-circle-fill text-primary"></i> <br>
@@ -90,7 +90,7 @@
                                 `;
                             }
 
-                            if ({{ $id_user }} == item.id_user_bookmark) {
+                            if (id_loggedin == item.id_user_bookmark) {
                                 bookmarked = `
                                     <a style="color: black; text-decoration: none;" href="javascript:void(0)" onclick="bookmarkPost('${item.id}')">
                                         <i id="bookmark${item.id}" style="font-size: 1.3rem;" class="bi bi-bookmark-fill text-warning"></i> <br>
