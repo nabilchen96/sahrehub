@@ -1,5 +1,6 @@
 @extends('layouts.template')
 @push('style')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
     <style>
         .tags-input {
             display: inline-block;
@@ -31,6 +32,13 @@
             cursor: pointer;
             margin-left: 5px;
         }
+        .summer > .card{
+            border-radius: 4px !important;
+        }
+
+        .note-btn{
+            border-radius: 0 !important;
+        }
     </style>
 @endpush
 @section('content')
@@ -40,7 +48,7 @@
         <div class="card">
             <div class="card-body">
                 <form id="form">
-                    <div class="mb-3">
+                    <div class="summer mb-3">
                         <label><b>Keterangan<sup class="text-danger">*</sup></b></label>
                         <textarea required name="keterangan" id="keterangan" class="form-control" cols="30" rows="5"
                             placeholder="Keterangan"></textarea>
@@ -67,7 +75,30 @@
     <div class="col-lg-1"></div>
 @endsection
 @push('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
     <script>
+        $(document).ready(function() {
+            $('#keterangan').summernote({
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['insert', ['link', 'hr', 'emoji']]
+                ],
+                popover: {
+                    emoji: [
+                        ['😀', '😬', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😈'],
+                        ['😉', '😊', '😋', '😌', '😍', '😎', '😏', '😐', '😑', '😒'],
+                        ['😓', '😔', '😕', '😖', '😗', '😘', '😙', '😚', '😛', '😜'],
+                        ['😝', '😞', '😟', '😠', '😡', '😢', '😣', '😤', '😥', '😦'],
+                        ['😧', '😨', '😩', '😪', '😫', '😬', '😭', '😮', '😯', '😰'],
+                        ['😱', '😲', '😳', '😴', '😵', '😶', '😷', '😸', '😹', '😺'],
+                        ['😻', '😼', '😽', '😾', '😿', '🙀', '🙁', '🙂', '🙃', '🙄'],
+                        ['🙅', '🙆', '🙇', '🙈', '🙉', '🙊', '🙋', '🙌', '🙍', '🙎'],
+                        ['🙏', '🤐', '🤑', '🤒', '🤓', '🤔', '🤕', '🤖', '🤗', '🤘']
+                    ]
+                }
+            });
+        });
+
         form.onsubmit = (e) => {
 
             let formData = new FormData(form);
@@ -84,7 +115,9 @@
                     method: 'post',
                     url: '/store-post',
                     data: formData,
-                    headers: { 'Content-Type': 'multipart/form-data' }
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 })
                 .then(function(res) {
                     //handle success         
