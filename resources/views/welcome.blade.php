@@ -38,6 +38,7 @@
     <script src="{{ asset('js/views/like.js') }}"></script>
     <script src="{{ asset('js/views/popular.js') }}"></script>
     <script src="{{ asset('js/views/timeformat.js') }}"></script>
+    <script src="{{ asset('js/views/up_post.js') }}"></script>
     <script src="{{ asset('js/views/bookmark.js') }}"></script>
     <script>
         // Initial load
@@ -73,6 +74,22 @@
                                 `;
                             }
 
+                            if ({{ $id_user }} == item.id_user_up) {
+                                uped = `
+                                    <a style="color: black; text-decoration: none;" href="javascript:void(0)" onclick="upPost('${item.id}')">
+                                        <i id="up${item.id}" style="font-size: 1.3rem;" class="bi bi-arrow-up-circle-fill text-primary"></i> <br>
+                                        <span style="font-size: 12px;" id="totalUpValue${item.id}">${item.total_up}</span>
+                                    </a>
+                                `;
+                            } else {
+                                uped = `
+                                    <a style="color: black; text-decoration: none;" href="javascript:void(0)" onclick="upPost('${item.id}')">
+                                        <i id="up${item.id}" style="font-size: 1.3rem;" class="bi bi-arrow-up-circle text-primary"></i> <br>
+                                        <span style="font-size: 12px;" id="totalUpValue${item.id}">${item.total_up}</span>
+                                    </a>
+                                `;
+                            }
+
                             if ({{ $id_user }} == item.id_user_bookmark) {
                                 bookmarked = `
                                     <a style="color: black; text-decoration: none;" href="javascript:void(0)" onclick="bookmarkPost('${item.id}')">
@@ -91,6 +108,13 @@
                                 <a style="color: black; text-decoration: none;" href="javascript:void(0)">
                                     <i id="like${item.id}" style="font-size: 1.3rem;" class="bi bi-heart text-danger"></i> <br>
                                     <span style="font-size: 12px;" id="totalLikeValue${item.id}">${item.total_like}</span>
+                                </a>
+                            `;
+
+                            uped = `
+                                <a style="color: black; text-decoration: none;" href="javascript:void(0)">
+                                    <i id="up${item.id}" style="font-size: 1.3rem;" class="bi bi-arrow-up-circle text-primary"></i> <br>
+                                    <span style="font-size: 12px;" id="totalUpValue${item.id}">${item.total_up}</span>
                                 </a>
                             `;
 
@@ -153,10 +177,7 @@
                                         </a>
                                     </div>
                                     <div class="mr-4 text-center">
-                                        <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">
-                                            <i style="font-size: 1.3rem;" class="bi bi-arrow-up-circle text-primary"></i> <br>
-                                            <span style="font-size: 12px;">${item.total_comment}</span>
-                                        </a>
+                                        ${uped}
                                     </div>
                                     <div class="mr-4 text-center">
                                         <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">

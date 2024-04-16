@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Like;
+use App\Models\Up;
 use App\Models\Tag;
 use DB;
 use Auth;
@@ -48,6 +49,7 @@ class PostController extends Controller
                     DB::raw('MAX(p.media) as media'),
                     DB::raw('MAX(p.total_like) as total_like'),
                     DB::raw('MAX(p.total_comment) as total_comment'),
+                    DB::raw('MAX(p.total_up) as total_up'),
 
                     DB::raw('MAX(u.name) as name'),
                     DB::raw('MAX(u.photo) as photo'),
@@ -55,7 +57,8 @@ class PostController extends Controller
                     DB::raw('MAX(t.tag) as tag'),
 
                     DB::raw('(SELECT id_user FROM likes WHERE id_post = p.id AND id_user = ' . Auth::id() . ' LIMIT 1) as id_user_like'),
-                    DB::raw('(SELECT id_user FROM bookmarks WHERE id_post = p.id AND id_user = ' . Auth::id() . ' LIMIT 1) as id_user_bookmark')
+                    DB::raw('(SELECT id_user FROM bookmarks WHERE id_post = p.id AND id_user = ' . Auth::id() . ' LIMIT 1) as id_user_bookmark'),
+                    DB::raw('(SELECT id_user FROM ups WHERE id_post = p.id AND id_user = ' . Auth::id() . ' LIMIT 1) as id_user_up')
 
                 )
                 ->orderBy('p.created_at', 'DESC')
@@ -73,6 +76,7 @@ class PostController extends Controller
                     DB::raw('MAX(p.media) as media'),
                     DB::raw('MAX(p.total_like) as total_like'),
                     DB::raw('MAX(p.total_comment) as total_comment'),
+                    DB::raw('MAX(p.total_up) as total_up'),
 
                     DB::raw('MAX(u.name) as name'),
                     DB::raw('MAX(u.photo) as photo'),
@@ -272,6 +276,47 @@ class PostController extends Controller
             Bookmark::create([
                 'id_user' => Auth::id(),
                 'id_post' => $request->id,
+            ]);
+        }
+
+
+        return response()->json([
+            'responCode' => 1,
+            'success' => true,
+            'message' => $post,
+            'id' => $request->id
+        ], 200);
+
+    }
+
+    public function up(Request $request)
+    {
+        //GET DATA POST
+        $post = Post::where('id', $request->id)->first();
+
+        //GET DATA LIKE
+        $up = Up::where('id_user', Auth::id())->where('id_post', $request->id)->first();
+
+        if ($up) {
+            //DELETE DATA COMMENT JIKA SUDAH ADA
+            $up->delete();
+
+            //KURANGI TOTAL LIKE JIKA SUDAH ADA
+            $post->update([
+                'total_up' => $post->total_up - 1
+            ]);
+
+        } else {
+
+            //TAMBAH DATA COMMENT JIKA BELUM ADA
+            Up::create([
+                'id_user' => Auth::id(),
+                'id_post' => $request->id,
+            ]);
+
+            //TAMBAH DATA TOTAL LIKE JIKA BELUM ADA
+            $post->update([
+                'total_up' => $post->total_up + 1
             ]);
         }
 

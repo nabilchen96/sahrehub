@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Like;
+use App\Models\Up;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -20,6 +21,21 @@ class ActivityController extends Controller
     public function dataLike()
     {
         $data = DB::table('likes as l')
+            ->leftJoin('posts as p', 'p.id', '=', 'l.id_post')
+            ->where('l.id_user', Auth::id())
+            ->paginate(10);
+
+        return response()->json($data);
+    }
+
+    public function up()
+    {
+        return view('activity.up');
+    }
+
+    public function dataUp()
+    {
+        $data = DB::table('ups as l')
             ->leftJoin('posts as p', 'p.id', '=', 'l.id_post')
             ->where('l.id_user', Auth::id())
             ->paginate(10);

@@ -1,7 +1,8 @@
 @extends('layouts.template')
 @push('style')
     <style>
-        .gambar-eksplor, video {
+        .gambar-eksplor,
+        video {
             aspect-ratio: 1/1;
             width: 100%;
             object-fit: cover;
@@ -52,46 +53,49 @@
     </div>
     <div class="col-lg-1"></div>
     <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form id="form">
-                        <input type="hidden" name="id" id="id">
-                        <div class="mb-3">
-                            <label><b>Nama<sup class="text-danger">*</sup></b></label>
-                            <input type="text" placeholder="Nama" class="form-control" name="name" id="name"
-                                required>
-                        </div>
-                        <div class="mb-4">
-                            <label><b>Password</b></label>
-                            <input placeholder="Password" type="password" class="form-control form-control-sm"
-                                id="media" name="media">
-                        </div>
-                        <div class="mb-4">
-                            <label><b>Keterangan</b></label>
-                            <textarea name="keterangan" id="keterangan" cols="30" rows="5" 
-                            placeholder="Keterangan" class="form-control"></textarea>
-                        </div>
-                        <div class="mb-4">
-                            <label><b>Website</b></label>
-                            <input type="text" class="form-control" name="website" id="website" placeholder="Website">
-                        </div>
-                        <div class="mb-4">
-                            <label><b>Foto Profil</b></label>
-                            <input placeholder="Foto Profil" type="file" class="form-control form-control-sm"
-                                id="photo" name="photo">
-                        </div>
-                        <div>
-                            <button id="tombol_kirim" class="btn btn-sm btn-info" style="height: 38px; border-radius: 4px;">
-                                Simpan!
-                            </button>
-                        </div>
-                    </form>
+    @if (Auth::id())
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form id="form">
+                            <input type="hidden" name="id" id="id">
+                            <div class="mb-3">
+                                <label><b>Nama<sup class="text-danger">*</sup></b></label>
+                                <input type="text" placeholder="Nama" class="form-control" name="name" id="name"
+                                    required>
+                            </div>
+                            <div class="mb-4">
+                                <label><b>Password</b></label>
+                                <input placeholder="Password" type="password" class="form-control form-control-sm"
+                                    id="media" name="media">
+                            </div>
+                            <div class="mb-4">
+                                <label><b>Keterangan</b></label>
+                                <textarea name="keterangan" id="keterangan" cols="30" rows="5" placeholder="Keterangan" class="form-control"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label><b>Website</b></label>
+                                <input type="text" class="form-control" name="website" id="website"
+                                    placeholder="Website">
+                            </div>
+                            <div class="mb-4">
+                                <label><b>Foto Profil</b></label>
+                                <input placeholder="Foto Profil" type="file" class="form-control form-control-sm"
+                                    id="photo" name="photo">
+                            </div>
+                            <div>
+                                <button id="tombol_kirim" class="btn btn-sm btn-info"
+                                    style="height: 38px; border-radius: 4px;">
+                                    Simpan!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 @endsection
 @push('script')
     <script src="{{ asset('js/views/timeformat.js') }}"></script>

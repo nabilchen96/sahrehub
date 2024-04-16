@@ -10,7 +10,7 @@
 
         .video-icon {
             margin: 15px;
-            font-size: 30px;
+            font-size: 100%;
             color: white;
         }
     </style>

@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store-post', 'App\Http\Controllers\PostController@store');
     Route::post('/like-post', 'App\Http\Controllers\PostController@like');
     Route::post('/bookmark-post', 'App\Http\Controllers\PostController@bookmark');
+    Route::post('/up-post', 'App\Http\Controllers\PostController@up');
 
     Route::get('/edit-post', 'App\Http\Controllers\PostController@edit');
     Route::post('/update-post', 'App\Http\Controllers\PostController@update');
@@ -73,4 +74,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/comment-activity', 'App\Http\Controllers\ActivityController@comment');
     Route::get('/data-comment-activity', 'App\Http\Controllers\ActivityController@dataComment');
 
+    Route::get('/up-activity', 'App\Http\Controllers\ActivityController@up');
+    Route::get('/data-up-activity', 'App\Http\Controllers\ActivityController@dataUp');
 });
