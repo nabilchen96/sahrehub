@@ -50,6 +50,7 @@ class PostController extends Controller
                     DB::raw('MAX(p.total_like) as total_like'),
                     DB::raw('MAX(p.total_comment) as total_comment'),
                     DB::raw('MAX(p.total_up) as total_up'),
+                    DB::raw('MAX(p.total_bookmark) as total_bookmark'),
 
                     DB::raw('MAX(u.name) as name'),
                     DB::raw('MAX(u.photo) as photo'),
@@ -77,6 +78,7 @@ class PostController extends Controller
                     DB::raw('MAX(p.total_like) as total_like'),
                     DB::raw('MAX(p.total_comment) as total_comment'),
                     DB::raw('MAX(p.total_up) as total_up'),
+                    DB::raw('MAX(p.total_bookmark) as total_bookmark'),
 
                     DB::raw('MAX(u.name) as name'),
                     DB::raw('MAX(u.photo) as photo'),
@@ -270,12 +272,22 @@ class PostController extends Controller
             //DELETE DATA BOOKMARK JIKA SUDAH ADA
             $bookmark->delete();
 
+            //KURANGI TOTAL LIKE JIKA SUDAH ADA
+            $post->update([
+                'total_bookmark' => $post->total_bookmark - 1
+            ]);
+
         } else {
 
             //TAMBAH DATA BOOKMARK JIKA BELUM ADA
             Bookmark::create([
                 'id_user' => Auth::id(),
                 'id_post' => $request->id,
+            ]);
+
+            //TAMBAH DATA TOTAL LIKE JIKA BELUM ADA
+            $post->update([
+                'total_bookmark' => $post->total_bookmark + 1
             ]);
         }
 

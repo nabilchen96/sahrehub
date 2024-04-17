@@ -5,9 +5,9 @@ bookmarkPost = (id) => {
     })
         .then((response) => {
             if (response.data.responCode == 1) {
-                var total_like = response.data.message.total_like
+                var total_like = response.data.message.total_bookmark
                 var id = response.data.id
-                document.getElementById(`totalLikeValue${id}`).innerHTML = total_like
+                document.getElementById(`totalBookmarkValue${id}`).innerHTML = total_like
 
                 //toggle bookmarked icon
                 var bookmarkIcon = document.getElementById(`bookmark${id}`);
