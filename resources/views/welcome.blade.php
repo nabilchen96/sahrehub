@@ -47,6 +47,7 @@
         loadItems(currentPage);
         loadPopular();
         let id_loggedin = {{ $id_user }} ?? 0
+        let url = 'https://social.sahrebook.com'
     
         // Load more items when scroll reaches the bottom
         window.addEventListener('scroll', function() {

@@ -127,11 +127,11 @@ function loadItems(page) {
                                     </a>
                                     <hr>
                                 </li>
-                                <li><a class="dropdown-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/detail-post/?id=${item.id}"><i class="bi bi-facebook text-info"></i> &nbsp; Facebook</a></li>
-                                <li><a class="dropdown-item" target="_blank" href="https://twitter.com/intent/tweet?url=/detail-post/?id=${item.id}"><i class="bi bi-twitter text-info"></i> &nbsp; Twitter</a></li>
-                                <li><a class="dropdown-item" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=/detail-post/?id=${item.id}"><i class="bi bi-linkedin text-info"></i> &nbsp; Linkedin</a></li>
-                                <li><a class="dropdown-item" target="_blank" href="https://pinterest.com/pin/create/button/?url=/detail-post/?id=${item.id}"><i class="bi bi-pinterest text-danger"></i> &nbsp; Pinterest</a></li>
-                                <li><a class="dropdown-item" target="_blank" href="https://web.whatsapp.com/send?text=/detail-post/?id=${item.id}"><i class="bi bi-whatsapp text-success"></i> &nbsp; Whatsapp</a></li>
+                                <li><a class="dropdown-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=${url}/detail-post/?id=${item.id}"><i class="bi bi-facebook text-info"></i> &nbsp; Facebook</a></li>
+                                <li><a class="dropdown-item" target="_blank" href="https://twitter.com/intent/tweet?url=${url}/detail-post/?id=${item.id}"><i class="bi bi-twitter text-info"></i> &nbsp; Twitter</a></li>
+                                <li><a class="dropdown-item" target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=${url}/detail-post/?id=${item.id}"><i class="bi bi-linkedin text-info"></i> &nbsp; Linkedin</a></li>
+                                <li><a class="dropdown-item" target="_blank" href="https://pinterest.com/pin/create/button/?url=${url}/detail-post/?id=${item.id}"><i class="bi bi-pinterest text-danger"></i> &nbsp; Pinterest</a></li>
+                                <li><a class="dropdown-item" target="_blank" href="https://web.whatsapp.com/send?text=${url}/detail-post/?id=${item.id}"><i class="bi bi-whatsapp text-success"></i> &nbsp; Whatsapp</a></li>
                             </ul>
                         </div>
                         ${mediaElement}
