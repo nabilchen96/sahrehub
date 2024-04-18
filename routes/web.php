@@ -26,6 +26,10 @@ Route::get('/data-eksplor', 'App\Http\Controllers\EksplorController@data');
 Route::get('/login', 'App\Http\Controllers\AuthController@login')->name('login');
 Route::post('/login-proses', 'App\Http\Controllers\AuthController@loginProses');
 
+//REGISTER
+Route::get('/register', 'App\Http\Controllers\AuthController@register');
+Route::post('/registerProses', 'App\Http\Controllers\AuthController@registerProses');
+
 //LOGOUT
 Route::get('/logout', function () {
     Auth::logout();

@@ -146,14 +146,14 @@
 
                 //profile keterangan
                 document.getElementById('profile-keterangan').innerHTML = `
-                    <p class="text-center mb-2">${data.keterangan}</p>
+                    <p class="text-center mb-2">${data.keterangan ?? ''}</p>
                 `
 
                 //profile keterangan
                 document.getElementById('profile-website').innerHTML = `
                     <a href="${data.website}" class="text-center mb-2">
                         <p>
-                            <i class="bi bi-globe"></i> ${data.website}
+                            <i class="bi bi-globe"></i> ${data.website ?? 'www.website.com'}
                         </p>
                     </a>
                 `

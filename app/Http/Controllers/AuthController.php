@@ -54,4 +54,46 @@ class AuthController extends Controller
         return response()->json($response_data);
 
     }
+
+    public function register()
+    {
+
+        return view('auth.register');
+    }
+
+    public function registerProses(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:8',
+            'email' => 'unique:users',
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+        if ($validator->fails()) {
+
+            $data['respon'] = 'Ada kesalahan silahkan ulangi!'.$validator->errors();
+
+        } else {
+            $data = User::create([
+                'name' => $request->name,
+                'role' => 'User',
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'photo' => 'avatar.png'
+            ]);
+
+            $data = [
+                'responCode' => 1,
+                'respon' => 'Data Berhasil Didaftarkan!'
+            ];
+
+            Auth::attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+            ]);
+        }
+
+        return response()->json($data);
+    }
 }

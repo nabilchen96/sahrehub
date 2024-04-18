@@ -26,7 +26,7 @@
             background-color: black;
         }
 
-        video{
+        video {
             max-height: 450px;
         }
     </style>
@@ -53,12 +53,12 @@
                     <a style="color: black; text-decoration: none;" href="{{ url('profil') }}?id={{ $data->id_user }}">
                         <div class="d-flex align-items-center">
                             <div>
-                                <img style="object-fit: cover;" src="{{ asset('profile') }}/{{ $data->photo }}" alt="Image"
-                                    class="mr-3 avatar avatar-md rounded-circle">
+                                <img style="object-fit: cover;" src="{{ asset('profile') }}/{{ $data->photo }}"
+                                    alt="Image" class="mr-3 avatar avatar-md rounded-circle">
                             </div>
                             <div class="ms-3">
                                 <h5 class="mb-0 ">{{ $data->name }}
-    
+
                                 </h5>
                                 <p class="teks mb-0">
                                     {{ \Carbon\Carbon::parse($data->created_at)->diffForHumans() }}
@@ -68,8 +68,10 @@
                     </a>
                     <div class="d-flex justify-content-end">
                         <div class="text-center">
-                            <i onclick="likePost('{{ $data->id }}')" id="like{{$data->id}}" style="font-size: 1.5rem;" class="bi bi-heart text-danger"></i> <br>
-                            <span id="totalLikeValue{{$data->id}}" style="font-size: 12px;">{{$data->total_like}}</span>
+                            <i onclick="likePost('{{ $data->id }}')" id="like{{ $data->id }}"
+                                style="font-size: 1.5rem;" class="bi bi-heart text-danger"></i> <br>
+                            <span id="totalLikeValue{{ $data->id }}"
+                                style="font-size: 12px;">{{ $data->total_like }}</span>
                         </div>
                         {{-- <div class="text-center"> <!-- Tambahkan kelas text-center di sini -->
                             <i style="font-size: 1.5rem;" class="text-warning bi bi-cash-coin"></i> <br>
@@ -98,7 +100,8 @@
                                     $word_with_hash = '#' . $word;
 
                                     // Membungkus setiap kata dengan tag <a href></a>
-                                    $word_with_link = '<a href="'.url('eksplor').'?id='.$word.'">' . $word_with_hash . '</a>';
+                                    $word_with_link =
+                                        '<a href="' . url('eksplor') . '?id=' . $word . '">' . $word_with_hash . '</a>';
 
                                     // Cetak hasilnya
                                     echo $word_with_link . ' ';
@@ -117,6 +120,8 @@
                 </div>
                 <form id="form">
                     @if (Auth::id())
+                        {!! NoCaptcha::display() !!}
+                        {!! NoCaptcha::renderJs() !!}
                         <div style="height: 34px;" class="mt-3 input-group">
                             <input style="height: 34px;" type="text" class="form-control" placeholder="Komentar..."
                                 name="keterangan" id="keterangan">

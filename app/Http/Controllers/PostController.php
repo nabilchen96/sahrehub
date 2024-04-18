@@ -199,7 +199,6 @@ class PostController extends Controller
     public function detail()
     {
 
-
         $data = DB::table('posts as p')
             ->join('users as u', 'u.id', '=', 'p.id_user')
             ->join('tags as t', 't.id_post', '=', 'p.id')
