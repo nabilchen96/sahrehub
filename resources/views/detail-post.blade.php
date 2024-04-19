@@ -120,8 +120,6 @@
                 </div>
                 <form id="form">
                     @if (Auth::id())
-                        {!! NoCaptcha::display() !!}
-                        {!! NoCaptcha::renderJs() !!}
                         <div style="height: 34px;" class="mt-3 input-group">
                             <input style="height: 34px;" type="text" class="form-control" placeholder="Komentar..."
                                 name="keterangan" id="keterangan">
