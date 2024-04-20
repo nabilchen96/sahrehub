@@ -144,7 +144,7 @@ class PostController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'media' => 'required|mimes:jpeg,png,mp4',
+            'media.*' => 'required|mimes:jpeg,png,mp4',
             'keterangan' => 'required',
         ]);
 
@@ -156,15 +156,25 @@ class PostController extends Controller
             ], 401);
         } else {
 
+            $media_names = [];
+
             if ($request->media) {
-                $media = time() . '.' . $request->media->extension();
-                $request->media->move(public_path('media'), $media);
+                
+                foreach ($request->media as $k => $file) {
+
+                    $media = ($k+1).time() . '.' . $file->extension();
+                    $file->move(public_path('media'), $media);
+                    $media_names[] = $media;
+                }
+
             }
+
+            $media_string = implode(', ', $media_names);
 
             $new_uuid = Str::uuid(); // Menyimpan UUID yang dihasilkan
             $post = new Post();
             $post->id = $new_uuid; // Menggunakan UUID untuk id
-            $post->media = $media ?? '';
+            $post->media = $media_string ?? '';
             $post->keterangan = $request->keterangan;
             $post->id_user = Auth::id();
             $post->total_like = 0;

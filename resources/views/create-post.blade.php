@@ -54,8 +54,15 @@
                             placeholder="Keterangan"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label><b>Media<sup class="text-danger">*</sup></b></label>
-                        <input required type="file" class="form-control form-control-sm" id="media" name="media">
+                        <label><b>Jenis Post</b></label>
+                        <select name="jenis_post" class="form-control" onchange="pilihJenisPost()" id="jenis_post">
+                            <option value="">PILIH JENIS POST</option>
+                            <option value="1">Foto</option>
+                            <option value="2">Video</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <div id="pilihanPost">
                     </div>
                     <div class="mb-3 tags-input">
                         <label><b>Tagar</b></label>
@@ -82,22 +89,30 @@
                 toolbar: [
                     ['style', ['bold', 'italic', 'underline', 'clear']],
                     ['insert', ['link', 'hr', 'emoji']]
-                ],
-                popover: {
-                    emoji: [
-                        ['😀', '😬', '😁', '😂', '😃', '😄', '😅', '😆', '😇', '😈'],
-                        ['😉', '😊', '😋', '😌', '😍', '😎', '😏', '😐', '😑', '😒'],
-                        ['😓', '😔', '😕', '😖', '😗', '😘', '😙', '😚', '😛', '😜'],
-                        ['😝', '😞', '😟', '😠', '😡', '😢', '😣', '😤', '😥', '😦'],
-                        ['😧', '😨', '😩', '😪', '😫', '😬', '😭', '😮', '😯', '😰'],
-                        ['😱', '😲', '😳', '😴', '😵', '😶', '😷', '😸', '😹', '😺'],
-                        ['😻', '😼', '😽', '😾', '😿', '🙀', '🙁', '🙂', '🙃', '🙄'],
-                        ['🙅', '🙆', '🙇', '🙈', '🙉', '🙊', '🙋', '🙌', '🙍', '🙎'],
-                        ['🙏', '🤐', '🤑', '🤒', '🤓', '🤔', '🤕', '🤖', '🤗', '🤘']
-                    ]
-                }
+                ]
             });
         });
+
+        function pilihJenisPost(){
+            let jenis = document.getElementById('jenis_post').value
+            let postPilihan = ''
+
+            if(jenis == 1){
+                postPilihan = `
+                    <label><b>Foto<sup class="text-danger">*</sup></b></label>
+                    <input required type="file" class="form-control form-control-sm" id="media" name="media[]" multiple>
+                    <span style="font-size: 12px;"><i>*you can upload more than one</i></span><br><br>
+                `
+            }else{
+                postPilihan = `
+                    <label><b>Video<sup class="text-danger">*</sup></b></label>
+                    <input required type="file" class="form-control form-control-sm" id="media" name="media[]">
+                    <br><br>
+                `
+            }
+
+            document.getElementById('pilihanPost').innerHTML = postPilihan
+        }
 
         form.onsubmit = (e) => {
 

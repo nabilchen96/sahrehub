@@ -57,10 +57,12 @@
                                 </a>
                             `
                         } else {
+                            
+                            const imageArray = item.media.split(', ');
 
                             mediaElement = `
                                 <a href="/detail-post?id=${item.id}">
-                                    <img class="gambar-eksplor" src="/media/${item.media}"
+                                    <img class="gambar-eksplor" src="/media/${imageArray[0]}"
                                         alt="${item.tag}">
                                 </a>
                             `;

@@ -26,7 +26,7 @@
             background-color: black;
         }
 
-        video {
+        video, img {
             max-height: 450px;
         }
     </style>
@@ -43,7 +43,38 @@
                             Your browser does not support the video tag.
                         </video>
                     @else
-                        <img src="{{ asset('media') }}/{{ $data->media }}" class="rounded-3 w-100" alt="Image">
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-interval="false"
+                            data-bs-interval="10">
+                            <div class="carousel-inner">
+                                @php
+                                    $string = $data->media;
+
+                                    // Memisahkan string berdasarkan koma dan spasi
+                                    $array = explode(', ', $string);
+                                @endphp
+                                @foreach ($array as $k => $item)
+                                    @php
+                                        $activeClass = $k + 1 === 1 ? 'active' : '';
+                                    @endphp
+
+                                    <div class="carousel-item {{ $activeClass }}">
+                                        <img style="max-height: 450px;" src="{{ asset('media') }}/{{ $item }}" class="rounded-3 w-100"
+                                            alt="Image {{ $data->tag }}">
+                                    </div>
+                                    @if(count($array) > 1)                                        
+                                        <a href="#" class="carousel-control-prev" type="button"
+                                            data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                                            <i class="bi bi-arrow-left-circle-fill text-muted" style="font-size: 2rem;"></i>
+                                        </a>
+                                        <a href="#" class="carousel-control-next" type="button"
+                                            data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                                            <i class="bi bi-arrow-right-circle-fill text-muted" style="font-size: 2rem;"></i>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
+
+                        </div>
                     @endif
                 </div>
             </div>
@@ -120,10 +151,10 @@
                 </div>
                 <form id="form">
                     @if (Auth::id())
-                        <div style="height: 34px;" class="mt-3 input-group">
-                            <input style="height: 34px;" type="text" class="form-control" placeholder="Komentar..."
+                        <div style="height: 34px;" class="input-group">
+                            <input style="height: 34px; margin-top: 5px;" type="text" class="form-control" placeholder="Komentar..."
                                 name="keterangan" id="keterangan">
-                            <button style="height: 34px; border-top-right-radius: 4px; border-bottom-right-radius: 4px;"
+                            <button style="height: 34px margin-top: 5px;; border-top-right-radius: 4px; border-bottom-right-radius: 4px;"
                                 class="bg-info text-white input-group-text" id="tombol_kirim">
                                 <i class="bi bi-send"></i>
                             </button>
