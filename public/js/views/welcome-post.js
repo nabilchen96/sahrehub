@@ -3,9 +3,11 @@ function loadItems(page) {
         .then(response => {
             const items = response.data.data;
             const itemsDiv = document.getElementById('postingan');
-            let mediaElement = ``
-
-            items.forEach(item => {
+            
+            items.forEach((item, i) => {
+                let mediaElement = ``
+                let buttonSlide = ``
+                let dotIndicator = ``
                 let liked = '';
                 let bookmarked = '';
                 if (id_loggedin != 0) {
@@ -91,13 +93,50 @@ function loadItems(page) {
 
                 } else {
 
-                    mediaElement = `
-                    <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">
-                        <img style="border-radius: 10px;" 
-                        src="/media/${item.media}"
-                        class="rounded-3 w-100" alt="Image">
-                    </a>
-                    `
+                    const imageArray = item.media.split(', ');
+
+                    // Melakukan loop melalui setiap nilai dalam array
+                    imageArray.forEach((image, index) => {
+
+                        const activeClass = index === 0 ? 'active' : '';
+
+                        // Membuat elemen gambar untuk setiap nilai dalam array
+                        mediaElement += `
+                        <div class="carousel-item ${activeClass}">
+                            <a href="/detail-post?id=${item.id}" style="text-decoration: none; color: black;">
+                                <img style="border-radius: 10px;" src="/media/${image.trim()}" class="rounded-3 w-100" alt="Image ${item.tag}">
+                            </a>
+                        </div>`;
+
+
+                    });
+
+                    if(imageArray.length > 1){
+                        buttonSlide = `
+                        <a href="#" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide="prev">
+                            <i class="bi bi-arrow-left-circle-fill text-muted"  style="font-size: 2rem;"></i>
+                        </a>
+                        <a href="#" class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide="next">
+                            <i class="bi bi-arrow-right-circle-fill text-muted" style="font-size: 2rem;"></i>
+                        </a>
+                        `
+
+                        dotIndicator = `
+                        <div class="carousel-indicators">
+                            <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+                                <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
+                            </a>
+                            <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="1" aria-label="Slide 2">
+                                <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
+                            </a>
+                            <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="2" aria-label="Slide 3">
+                                <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
+                            </a>
+                        </div>
+                        `
+                    }else{
+                        buttonSlide = ``
+                    }
                 }
 
                 const div = document.createElement('div');
@@ -134,7 +173,13 @@ function loadItems(page) {
                                 <li><a class="dropdown-item" target="_blank" href="https://web.whatsapp.com/send?text=${url}/detail-post/?id=${item.id}"><i class="bi bi-whatsapp text-success"></i> &nbsp; Whatsapp</a></li>
                             </ul>
                         </div>
-                        ${mediaElement}
+                        <div id="carouselExampleFade${i+1}" class="carousel slide carousel-fade" data-bs-interval="false" data-bs-interval="10">
+                            <div class="carousel-inner">
+                                ${mediaElement}
+                                ${buttonSlide}
+                            </div>
+                            ${dotIndicator}
+                        </div>
                         <div class="p-2 d-flex justify-content-between mt-3 mt-lg-2 align-items-center">
                             <div class="mr-4 text-center">
                                 ${liked}

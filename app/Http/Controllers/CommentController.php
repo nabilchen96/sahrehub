@@ -38,7 +38,6 @@ class CommentController extends Controller
         $validator = Validator::make($request->all(), [
             'keterangan' => 'required',
             'id_post' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         if ($validator->fails()) {
