@@ -162,6 +162,20 @@ class PostController extends Controller
                 
                 foreach ($request->media as $k => $file) {
 
+                    if($request->jenis_post == '1' && $file->extension() == '.mp4'){
+                        return response()->json([
+                            'responCode' => 0,
+                            'success' => false,
+                            'message' => 'required image format jpg or png',
+                        ], 401);
+                    }elseif($request->jenis_post == '2' && count($request->media) > 1){
+                        return response()->json([
+                            'responCode' => 0,
+                            'success' => false,
+                            'message' => 'just one media in video type',
+                        ], 401);
+                    }
+
                     $media = ($k+1).time() . '.' . $file->extension();
                     $file->move(public_path('media'), $media);
                     $media_names[] = $media;
