@@ -111,10 +111,10 @@ function loadItems(page) {
 
                     if(imageArray.length > 1){
                         buttonSlide = `
-                        <a href="#" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide="prev">
+                        <a href="#" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade${item.id}" data-bs-slide="prev">
                             <i class="bi bi-arrow-left-circle-fill text-muted"  style="font-size: 2rem;"></i>
                         </a>
-                        <a href="#" class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide="next">
+                        <a href="#" class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade${item.id}" data-bs-slide="next">
                             <i class="bi bi-arrow-right-circle-fill text-muted" style="font-size: 2rem;"></i>
                         </a>
                         `
@@ -156,7 +156,7 @@ function loadItems(page) {
                                 <li><a class="dropdown-item" target="_blank" href="https://web.whatsapp.com/send?text=${url}/detail-post/?id=${item.id}"><i class="bi bi-whatsapp text-success"></i> &nbsp; Whatsapp</a></li>
                             </ul>
                         </div>
-                        <div id="carouselExampleFade${i+1}" class="carousel slide carousel-fade" data-bs-interval="false">
+                        <div id="carouselExampleFade${item.id}" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="false">
                             <div class="carousel-inner">
                                 ${mediaElement}
                                 ${buttonSlide}
