@@ -107,12 +107,6 @@ function loadItems(page) {
                                 <img style="border-radius: 10px;" src="/media/${image.trim()}" class="rounded-3 w-100" alt="Image ${item.tag}">
                             </a>
                         </div>`;
-
-                        dotIndicator += `
-                        <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="${index}" class="active" aria-current="true" aria-label="Slide 1">
-                            <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
-                        </a>
-                        `
                     });
 
                     if(imageArray.length > 1){
@@ -140,7 +134,6 @@ function loadItems(page) {
                                     <img style="width: 35px; height: 35px; object-fit: cover;" src="/profile/${item.photo}"
                                         alt="Image" class="mr-3 avatar avatar-md rounded-circle">
                                 </div>
-                                
                                 <div class="ms-2">
                                     <h5 style="font-size: 14px;" class="mb-0">${item.name}</h5>
                                     <p style="font-size: 12px; " class="mb-0">${timeAgo(item.created_at)}</p>
@@ -163,7 +156,7 @@ function loadItems(page) {
                                 <li><a class="dropdown-item" target="_blank" href="https://web.whatsapp.com/send?text=${url}/detail-post/?id=${item.id}"><i class="bi bi-whatsapp text-success"></i> &nbsp; Whatsapp</a></li>
                             </ul>
                         </div>
-                        <div id="carouselExampleFade${i+1}" class="carousel slide carousel-fade" data-bs-interval="false" data-bs-interval="10">
+                        <div id="carouselExampleFade${i+1}" class="carousel slide carousel-fade" data-bs-interval="false">
                             <div class="carousel-inner">
                                 ${mediaElement}
                                 ${buttonSlide}
@@ -185,7 +178,6 @@ function loadItems(page) {
                             <div class="text-center"> <!-- Tambahkan kelas text-center di sini -->
                                 ${bookmarked}
                             </div>
-
                         </div>
                         <div class="pr-2 pl-2">
                             <br>
