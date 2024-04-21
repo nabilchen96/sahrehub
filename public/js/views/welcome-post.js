@@ -168,9 +168,6 @@ function loadItems(page) {
                                 ${mediaElement}
                                 ${buttonSlide}
                             </div>
-                            <div class="carousel-indicators">
-
-                            </div>
                         </div>
                         <div class="p-2 d-flex justify-content-between mt-3 mt-lg-2 align-items-center">
                             <div class="mr-4 text-center">
