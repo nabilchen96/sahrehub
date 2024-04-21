@@ -54,11 +54,11 @@
                             placeholder="Keterangan"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label><b>Jenis Post</b></label>
-                        <select name="jenis_post" class="form-control" onchange="pilihJenisPost()" id="jenis_post">
+                        <label><b>Jenis Post<sup class="text-danger">*</sup></b></label>
+                        <select required name="jenis_post" class="form-control" onchange="pilihJenisPost()" id="jenis_post">
                             <option value="">PILIH JENIS POST</option>
-                            <option value="1">Foto</option>
-                            <option value="2">Video</option>
+                            <option value="1">FOTO</option>
+                            <option value="2">VIDEO</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -100,14 +100,14 @@
             if(jenis == 1){
                 postPilihan = `
                     <label><b>Foto<sup class="text-danger">*</sup></b></label>
-                    <input required type="file" class="form-control form-control-sm" id="media" name="media[]" multiple>
+                    <input required type="file" class="form-control form-control-sm" id="media" name="media[]" multiple accept="image/*">
                     <span style="font-size: 12px;"><i>*you can upload more than one</i></span><br><br>
                 `
             }else{
                 postPilihan = `
                     <label><b>Video<sup class="text-danger">*</sup></b></label>
-                    <input required type="file" class="form-control form-control-sm" id="media" name="media[]">
-                    <br><br>
+                    <input required type="file" class="form-control form-control-sm" id="media" name="media[]" accept="video/mp4">
+                    <span style="font-size: 12px;"><i>*format .mp4</i></span><br><br>
                 `
             }
 

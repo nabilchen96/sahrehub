@@ -108,7 +108,11 @@ function loadItems(page) {
                             </a>
                         </div>`;
 
-
+                        dotIndicator += `
+                        <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="${index}" class="active" aria-current="true" aria-label="Slide 1">
+                            <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
+                        </a>
+                        `
                     });
 
                     if(imageArray.length > 1){
@@ -119,20 +123,6 @@ function loadItems(page) {
                         <a href="#" class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide="next">
                             <i class="bi bi-arrow-right-circle-fill text-muted" style="font-size: 2rem;"></i>
                         </a>
-                        `
-
-                        dotIndicator = `
-                        <div class="carousel-indicators">
-                            <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                                <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
-                            </a>
-                            <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="1" aria-label="Slide 2">
-                                <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
-                            </a>
-                            <a type="button" data-bs-target="#carouselExampleFade${i+1}" data-bs-slide-to="2" aria-label="Slide 3">
-                                <i class="bi bi-dot text-muted" style="font-size: 2rem;"></i>
-                            </a>
-                        </div>
                         `
                     }else{
                         buttonSlide = ``
@@ -178,7 +168,9 @@ function loadItems(page) {
                                 ${mediaElement}
                                 ${buttonSlide}
                             </div>
-                            ${dotIndicator}
+                            <div class="carousel-indicators">
+
+                            </div>
                         </div>
                         <div class="p-2 d-flex justify-content-between mt-3 mt-lg-2 align-items-center">
                             <div class="mr-4 text-center">
